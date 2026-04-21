@@ -1,0 +1,102 @@
+/* Página galería (galeria.html) */
+
+header {
+  position: relative;
+  z-index: 1;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1.75rem 1.25rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+header h1 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 600;
+  color: #4a2f3d;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.4);
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  text-decoration: none;
+  color: #9a3d5c;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  background: var(--glass-fill);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.back-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(60, 25, 45, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 1.25rem 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.intro {
+  text-align: center;
+  color: #4f3545;
+  margin-bottom: 2rem;
+  font-size: 1.05rem;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.4);
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.25rem;
+}
+
+.gallery figure {
+  margin: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 4px;
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  background: var(--glass-fill);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.gallery figure:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 36px rgba(60, 25, 45, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+
+.gallery img {
+  display: block;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 0.85rem;
+  color: #9a7a88;
+  font-style: italic;
+  position: relative;
+  z-index: 1;
+}

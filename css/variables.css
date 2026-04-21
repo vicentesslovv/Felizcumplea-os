@@ -1,0 +1,36 @@
+/* Tokens de diseño compartidos — edita aquí colores, vidrio y tipografía base */
+:root {
+  /* Fondo: degradado rosado + malla radial */
+  --bg-canvas: #e8a4bc;
+  --bg-wash-top: #f8d4e2;
+  --bg-wash-mid: #e9a0b8;
+  --bg-wash-bottom: #d889a5;
+  --bg-spot-1: rgba(255, 140, 180, 0.55);
+  --bg-spot-2: rgba(190, 150, 210, 0.38);
+  --bg-spot-3: rgba(255, 200, 218, 0.65);
+  --bg-spot-4: rgba(220, 175, 140, 0.28);
+  --bg-spot-5: rgba(255, 228, 238, 0.55);
+  --bg-vignette: rgba(85, 35, 55, 0.14);
+
+  /* Superficies tipo vidrio */
+  --glass-fill: linear-gradient(
+    155deg,
+    rgba(255, 255, 255, 0.42) 0%,
+    rgba(255, 230, 242, 0.28) 45%,
+    rgba(255, 200, 220, 0.2) 100%
+  );
+  --glass-border: rgba(255, 255, 255, 0.55);
+  --glass-border-soft: rgba(255, 255, 255, 0.35);
+  --glass-shadow: 0 8px 32px rgba(60, 25, 45, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  --glass-blur: saturate(140%) blur(18px);
+  --radius-card: 20px;
+
+  --rose: #f8e1e8;
+  --rose-deep: #e8b4c4;
+  --blush: #ffd6e0;
+  --cream: #fff9fb;
+  --text: #5c3d4a;
+  --accent: #c76b8a;
+  --gold: #d4a574;
+  --shadow: rgba(92, 61, 74, 0.12);
+}

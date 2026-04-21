@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feliz Cumpleaños — Para ti</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/home.css" />
+</head>
+<body>
+  <div id="loading-overlay" role="dialog" aria-label="Pantalla de bienvenida">
+    <div class="heart-wrap" id="heartBtn" tabindex="0" aria-label="Toca el corazón para continuar">
+      <div class="heart-frame">
+        <img class="heart-img" id="heartImg" src="img/corazon.png" alt="" width="320" height="320" decoding="async" />
+      </div>
+    </div>
+    <p class="hint">Toca el corazón, mi amor</p>
+  </div>
+
+  <main id="main-content">
+    <h1 class="hero-title">Feliz Cumpleaños a mi niña hermosa</h1>
+    <p class="hero-sub">Te amo mi vida. Eres lo mejor que me ha pasado.</p>
+
+    <section class="gallery-cta" aria-label="Enlace a la galería">
+      <p>Entra aca y veras todas las fotitos hermosaaas que tenemos y mucho mas xopxop jejeje.</p>
+      <a href="galeria.html">Ver galería de fotos →</a>
+    </section>
+
+    <section class="letter-box">
+      <h2>Para ti, con todo mi cariño</h2>
+      <p>
+        <!-- Escribe aquí tu carta personal. Puedes borrar este párrafo y añadir los que quieras. -->
+         Te amo demasiado bebe este es el comienzo de esta pagina que le hice a mi bebe preciosa, te amo mucho muchoo. espero que te haya gustado y que te hayan gustado todos tus regalitos muuuy lindos mi bebe
+         de vrd te amo demasiado y quiero mi vida entera con usted mi samipro mi xopxop coxinonaa te amo demasiado te amo con todo mi alma. espero que estemos juntitos hasta que los dos estemos viejitos(bueno yo mas que tu ushhh)
+         pero de verdad te amo demasiadooooo wawa este dia y todos los otros dias que pasen van a ser siempre mas lindos a tu lado. que bueno que te hice una cartita asi porfin me entiendes la letra jejeje. te amo demasiadooo mi bebeeee hermosaaa muchoooooo muchooooo
+        <br /><br />
+        Con mucho amor<br />
+        <em>Papi proo proo</em>
+      </p>
+    </section>
+
+    <section class="game-section" aria-label="Minijuego">
+      <h2>Kirby vs. Hamburguesas</h2>
+      <p class="game-sub">Pulsa <strong>¡Jugar!</strong> para empezar. Esquiva con ← → o tocando los lados del área de juego. La dificultad sube poco a poco.</p>
+      <div class="game-wrap" id="gameWrap">
+        <canvas id="gameCanvas" width="480" height="360" aria-label="Canvas del minijuego"></canvas>
+        <div class="game-start-panel" id="gameStartPanel">
+          <p id="gameStartHint">Pulsa para empezar a esquivar hamburguesas.</p>
+          <button type="button" id="btnJugar">¡Jugar!</button>
+        </div>
+        <div class="lose-banner" id="loseBanner" role="status">¡Uy! Perdiste, vuelve a intentarlo</div>
+      </div>
+      <div class="game-hud">
+        <span>Puntos: <strong id="scoreVal">0</strong></span>
+        <span id="gameState">Pulsa ¡Jugar!</span>
+      </div>
+      <p class="touch-zones">Móvil: durante la partida, mantén el dedo en el lado izquierdo o derecho del recuadro para mover a Kirby.</p>
+    </section>
+
+    <footer class="page-foot">Hecho con amor — feliz cumpleaños</footer>
+  </main>
+
+  <!-- Easter egg: carta secreta al llegar a 500 puntos en el minijuego -->
+  <div id="loveLetterModal" class="love-letter-modal" aria-hidden="true" role="dialog" aria-labelledby="loveLetterTitle">
+    <div class="love-letter-backdrop" id="loveLetterBackdrop"></div>
+      <div class="love-letter-scene">
+      <p class="love-letter-badge" id="loveLetterBadge">¡Secreto desbloqueado!</p>
+      <div class="love-flip-wrap" id="loveFlipWrap">
+        <div class="love-flip-card" id="loveFlipCard" role="button" tabindex="0" aria-label="Toca el sobre para leer el mensaje.">
+          <div class="love-face love-face-front">
+            <div class="envelope">
+              <div class="envelope__flap"></div>
+              <div class="envelope__body"></div>
+              <div class="envelope__pocket"></div>
+              <div class="envelope__seal"><span aria-hidden="true">♥</span></div>
+            </div>
+            <p class="envelope__hint">Toca el sobre para leer mi mensaje</p>
+          </div>
+          <div class="love-face love-face-back">
+            <div class="love-letter-paper love-letter-paper--peek">
+              <p class="love-letter-peek">Para ti, con todo mi corazón ♥</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Edita aquí tu mensaje romántico (aparece al abrir el sobre) -->
+      <div id="lovePersonalMessage" class="love-personal-message" aria-live="polite">
+        <div class="love-personal-inner">
+          <h3 id="loveLetterTitle">Para mi bebe</h3>
+          <div class="love-letter-body love-letter-body--full" id="loveLetterSecretBody">
+            <p>
+              Te amo demasiado bebe hermosa espero que te hayan gustado todos los regalitos que te di mi angelito de amo demasiado.
+            </p>
+            <p>
+              Gracias por siempre quererme en tu vida y por estar siempre conmigo en las buenas y en las malas siempre voy a estar con usted mi angelito.
+            </p>
+            <p class="love-letter-signoff">
+              <em>Te amo con todo mi corazon<br /><span class="love-signature">Pupiii propro</span></em>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="love-letter-close" id="loveLetterClose">Seguir jugando</button>
+    </div>
+  </div>
+
+  <!-- Imágenes en /img: corazon.png, kirby.png, hamburguesa.png (edita rutas en ASSETS si usas otros nombres) -->
+  <script>
+    (function () {
+      /* Cambia aquí si tus archivos tienen otro nombre o extensión (.jpg, etc.) */
+      var ASSETS = {
+        corazon: "img/corazon.png",
+        kirby: "img/kirby.jpg",
+        hamburguesa: "img/hamburguesa.webp"
+      };
+
+      var overlay = document.getElementById("loading-overlay");
+      var heartBtn = document.getElementById("heartBtn");
+      var heartImg = document.getElementById("heartImg");
+      var main = document.getElementById("main-content");
+
+      if (heartImg) {
+        heartImg.src = ASSETS.corazon;
+        heartImg.addEventListener("error", function () {
+          heartImg.alt = "Corazón";
+          heartImg.style.opacity = "0.85";
+        });
+      }
+
+      function explodeHeart() {
+        if (heartBtn.classList.contains("exploding")) return;
+        heartBtn.classList.add("exploding");
+        var rect = heartBtn.getBoundingClientRect();
+        var cx = rect.left + rect.width / 2;
+        var cy = rect.top + rect.height / 2;
+        var colors = ["#ff8fa8", "#e84d6f", "#ffd6e0", "#fff", "#c73d5c", "#f5c8d8"];
+        var n = 48;
+        for (var i = 0; i < n; i++) {
+          var p = document.createElement("span");
+          p.className = "particle";
+          var angle = (Math.PI * 2 * i) / n + Math.random() * 0.5;
+          var dist = 80 + Math.random() * 120;
+          p.style.left = cx + "px";
+          p.style.top = cy + "px";
+          p.style.background = colors[i % colors.length];
+          p.style.setProperty("--dx", Math.cos(angle) * dist + "px");
+          p.style.setProperty("--dy", Math.sin(angle) * dist + "px");
+          p.style.animation = "burst 0.7s ease-out forwards";
+          document.body.appendChild(p);
+          (function (el) {
+            setTimeout(function () {
+              el.remove();
+            }, 750);
+          })(p);
+        }
+        overlay.classList.add("hidden");
+        setTimeout(function () {
+          main.classList.add("visible");
+        }, 200);
+      }
+
+      heartBtn.addEventListener("click", explodeHeart);
+      heartBtn.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          explodeHeart();
+        }
+      });
+
+      var KIRBY_IMG = new Image();
+      KIRBY_IMG.src = ASSETS.kirby;
+      var BURGER_IMG = new Image();
+      BURGER_IMG.src = ASSETS.hamburguesa;
+
+      var canvas = document.getElementById("gameCanvas");
+      var ctx = canvas.getContext("2d");
+      var scoreEl = document.getElementById("scoreVal");
+      var gameStateEl = document.getElementById("gameState");
+      var loseBanner = document.getElementById("loseBanner");
+      var gameWrap = document.getElementById("gameWrap");
+      var gameStartPanel = document.getElementById("gameStartPanel");
+      var btnJugar = document.getElementById("btnJugar");
+      var gameStartHint = document.getElementById("gameStartHint");
+
+      var W = canvas.width;
+      var H = canvas.height;
+      var kirby = {
+        x: W / 2,
+        y: H - 48,
+        r: 28,
+        speed: 5.1
+      };
+
+      var burgers = [];
+      var frame = 0;
+      var score = 0;
+      /** @type {'menu'|'playing'|'gameover'|'letterpause'} */
+      var state = "menu";
+      var lastTouchSide = null;
+      var spawnCooldown = SPAWN_COOLDOWN_START;
+      var loveLetterTriggered = false;
+      var LOVE_SCORE_TARGET = 500;
+
+      var loveLetterModal = document.getElementById("loveLetterModal");
+      var loveFlipCard = document.getElementById("loveFlipCard");
+      var loveLetterClose = document.getElementById("loveLetterClose");
+      var loveLetterBackdrop = document.getElementById("loveLetterBackdrop");
+      var lovePersonalMessage = document.getElementById("lovePersonalMessage");
+
+      /* Velocidad de puntos: más alto = puntos más rápidos */
+      var POINTS_PER_TICK = 2;
+      var SCORE_DISPLAY_DIV = 10;
+      /* Dificultad inicial: menor = aparecen hamburguesas antes */
+      var SPAWN_COOLDOWN_START = 62;
+
+      function rand(min, max) {
+        return min + Math.random() * (max - min);
+      }
+
+      function gameIntensity() {
+        var sec = frame / 60;
+        return Math.min(1, sec / 72);
+      }
+
+      function burgerAspect() {
+        if (BURGER_IMG.complete && BURGER_IMG.naturalWidth > 0) {
+          return BURGER_IMG.naturalHeight / BURGER_IMG.naturalWidth;
+        }
+        return 0.72;
+      }
+
+      function kirbyUsesImage() {
+        return KIRBY_IMG.complete && KIRBY_IMG.naturalWidth > 0;
+      }
+
+      function burgerUsesImage() {
+        return BURGER_IMG.complete && BURGER_IMG.naturalWidth > 0;
+      }
+
+      function refreshAssetButton() {
+        var okK = kirbyUsesImage();
+        var okB = burgerUsesImage();
+        if (okK && okB) {
+          btnJugar.disabled = false;
+          gameStartHint.textContent = "Pulsa para empezar a esquivar hamburguesas.";
+        } else {
+          btnJugar.disabled = true;
+          gameStartHint.textContent = "Cargando imágenes desde la carpeta img…";
+        }
+      }
+
+      function drawSky() {
+        var sky = ctx.createLinearGradient(0, 0, 0, H);
+        sky.addColorStop(0, "#dfefff");
+        sky.addColorStop(0.5, "#c8dff5");
+        sky.addColorStop(1, "#b8d4ef");
+        ctx.fillStyle = sky;
+        ctx.fillRect(0, 0, W, H);
+      }
+
+      function drawIdleScene() {
+        drawSky();
+        kirby.x = W / 2;
+        kirby.y = H - 48;
+        drawKirby();
+      }
+
+      function drawFrozenGameFrame() {
+        drawSky();
+        for (var i = 0; i < burgers.length; i++) {
+          drawBurger(burgers[i]);
+        }
+        drawKirby();
+      }
+
+      function startGame() {
+        if (state !== "menu" || btnJugar.disabled) return;
+        state = "playing";
+        gameStartPanel.classList.add("hidden");
+        kirby.x = W / 2;
+        kirby.y = H - 48;
+        burgers = [];
+        frame = 0;
+        score = 0;
+        spawnCooldown = SPAWN_COOLDOWN_START;
+        loveLetterTriggered = false;
+        scoreEl.textContent = "0";
+        gameStateEl.textContent = "¡Suerte!";
+        loseBanner.classList.remove("show");
+        lastTouchSide = null;
+        keys.ArrowLeft = false;
+        keys.ArrowRight = false;
+      }
+
+      function lose() {
+        if (state !== "playing") return;
+        state = "gameover";
+        loseBanner.classList.add("show");
+        gameStateEl.textContent = "Reiniciando…";
+        setTimeout(function () {
+          loseBanner.classList.remove("show");
+          state = "menu";
+          burgers = [];
+          kirby.x = W / 2;
+          kirby.y = H - 48;
+          scoreEl.textContent = "0";
+          gameStateEl.textContent = "Pulsa ¡Jugar!";
+          gameStartPanel.classList.remove("hidden");
+        }, 900);
+      }
+
+      function resetLoveLetterPanels() {
+        if (loveFlipCard) loveFlipCard.classList.remove("open");
+        if (lovePersonalMessage) lovePersonalMessage.classList.remove("love-personal-message--visible");
+      }
+
+      function openLoveLetter() {
+        if (state !== "playing") return;
+        state = "letterpause";
+        resetLoveLetterPanels();
+        if (loveLetterModal) {
+          loveLetterModal.classList.add("visible");
+          loveLetterModal.setAttribute("aria-hidden", "false");
+          document.body.style.overflow = "hidden";
+        }
+        gameStateEl.textContent = "Carta desbloqueada ✉";
+        if (loveFlipCard) {
+          setTimeout(function () {
+            loveFlipCard.focus();
+          }, 100);
+        }
+      }
+
+      function closeLoveLetter() {
+        if (!loveLetterModal || !loveLetterModal.classList.contains("visible")) return;
+        loveLetterModal.classList.remove("visible");
+        loveLetterModal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+        resetLoveLetterPanels();
+        if (state === "letterpause") {
+          state = "playing";
+          gameStateEl.textContent = "¡Sigue esquivando!";
+        }
+      }
+
+      function toggleLoveFlip(e) {
+        if (e) e.stopPropagation();
+        if (!loveFlipCard) return;
+        loveFlipCard.classList.toggle("open");
+        var isOpen = loveFlipCard.classList.contains("open");
+        if (lovePersonalMessage) {
+          if (isOpen) {
+            lovePersonalMessage.classList.add("love-personal-message--visible");
+          } else {
+            lovePersonalMessage.classList.remove("love-personal-message--visible");
+          }
+        }
+      }
+
+      if (loveFlipCard) {
+        loveFlipCard.addEventListener("click", toggleLoveFlip);
+        loveFlipCard.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            toggleLoveFlip(e);
+          }
+        });
+      }
+      if (loveLetterClose) loveLetterClose.addEventListener("click", closeLoveLetter);
+      if (loveLetterBackdrop) loveLetterBackdrop.addEventListener("click", closeLoveLetter);
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && loveLetterModal.classList.contains("visible")) {
+          closeLoveLetter();
+        }
+      });
+
+      function spawnBurger() {
+        var inten = gameIntensity();
+        var speedMin = 0.58 + inten * 1.85;
+        var speedMax = 0.98 + inten * 2.15;
+        var asp = burgerAspect();
+        var bw = rand(40, 50);
+        var bh = bw * asp;
+        var cx = rand(bw * 0.55, W - bw * 0.55);
+        var hitR = Math.min(bw, bh) * 0.42;
+        burgers.push({
+          x: cx,
+          y: -bh * 0.55,
+          w: bw,
+          h: bh,
+          r: hitR,
+          vy: rand(speedMin, speedMax),
+          wobble: Math.random() * Math.PI * 2
+        });
+      }
+
+      function drawKirbyPrimitive(x, y, radius) {
+        ctx.save();
+        ctx.translate(x, y);
+        var grd = ctx.createRadialGradient(-6, -6, 4, 0, 0, radius);
+        grd.addColorStop(0, "#ffb7d5");
+        grd.addColorStop(0.7, "#ff6b9d");
+        grd.addColorStop(1, "#e84d8a");
+        ctx.beginPath();
+        ctx.arc(0, 0, radius, 0, Math.PI * 2);
+        ctx.fillStyle = grd;
+        ctx.fill();
+        ctx.restore();
+      }
+
+      function drawKirby() {
+        var x = kirby.x;
+        var y = kirby.y;
+        var r = kirby.r;
+        if (kirbyUsesImage()) {
+          var size = r * 2.25;
+          ctx.drawImage(KIRBY_IMG, x - size / 2, y - size / 2, size, size);
+        } else {
+          drawKirbyPrimitive(x, y, r);
+        }
+      }
+
+      function drawBurgerFallback(b) {
+        ctx.save();
+        var left = b.x - b.w / 2;
+        var top = b.y - b.h / 2;
+        ctx.fillStyle = "#d4a574";
+        ctx.fillRect(left, top, b.w, b.h);
+        ctx.restore();
+      }
+
+      function drawBurger(b) {
+        if (burgerUsesImage()) {
+          ctx.drawImage(BURGER_IMG, b.x - b.w / 2, b.y - b.h / 2, b.w, b.h);
+        } else {
+          drawBurgerFallback(b);
+        }
+      }
+
+      function dist2(ax, ay, bx, by) {
+        var dx = ax - bx;
+        var dy = ay - by;
+        return dx * dx + dy * dy;
+      }
+
+      var keys = { ArrowLeft: false, ArrowRight: false };
+
+      document.addEventListener("keydown", function (e) {
+        if (state !== "playing") return;
+        if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+          e.preventDefault();
+          keys[e.key] = true;
+        }
+      });
+      document.addEventListener("keyup", function (e) {
+        if (e.key === "ArrowLeft" || e.key === "ArrowRight") keys[e.key] = false;
+      });
+
+      function handleTouchStart(e) {
+        if (state !== "playing") return;
+        var rect = gameWrap.getBoundingClientRect();
+        for (var i = 0; i < e.changedTouches.length; i++) {
+          var t = e.changedTouches[i];
+          var nx = (t.clientX - rect.left) / rect.width;
+          if (nx < 0.5) lastTouchSide = "left";
+          else lastTouchSide = "right";
+        }
+      }
+      function handleTouchEnd() {
+        lastTouchSide = null;
+      }
+      gameWrap.addEventListener("touchstart", handleTouchStart, { passive: true });
+      gameWrap.addEventListener("touchend", handleTouchEnd, { passive: true });
+      gameWrap.addEventListener("touchcancel", handleTouchEnd, { passive: true });
+
+      btnJugar.addEventListener("click", startGame);
+
+      function tick() {
+        requestAnimationFrame(tick);
+
+        if (state === "menu") {
+          drawIdleScene();
+          return;
+        }
+
+        if (state === "gameover") {
+          drawFrozenGameFrame();
+          return;
+        }
+
+        if (state === "letterpause") {
+          drawFrozenGameFrame();
+          return;
+        }
+
+        frame++;
+        var inten = gameIntensity();
+        if (keys.ArrowLeft) kirby.x -= kirby.speed;
+        if (keys.ArrowRight) kirby.x += kirby.speed;
+        if (lastTouchSide === "left") kirby.x -= kirby.speed * 1.08;
+        if (lastTouchSide === "right") kirby.x += kirby.speed * 1.08;
+
+        kirby.x = Math.max(kirby.r + 4, Math.min(W - kirby.r - 4, kirby.x));
+
+        var baseGap = Math.max(24, Math.round(72 - inten * 46));
+        var jitter = Math.floor(rand(0, 12));
+        spawnCooldown--;
+        if (spawnCooldown <= 0) {
+          spawnBurger();
+          spawnCooldown = baseGap + jitter;
+        }
+
+        drawSky();
+
+        for (var i = burgers.length - 1; i >= 0; i--) {
+          var b = burgers[i];
+          var fallBoost = 1 + inten * 0.22;
+          b.y += b.vy * fallBoost;
+          b.x += Math.sin(frame * 0.028 + b.wobble) * (0.42 + inten * 0.52);
+          if (b.y - b.h * 0.55 > H) {
+            burgers.splice(i, 1);
+            continue;
+          }
+          drawBurger(b);
+          if (dist2(kirby.x, kirby.y, b.x, b.y) < (kirby.r + b.r - 2) * (kirby.r + b.r - 2)) {
+            lose();
+            return;
+          }
+        }
+
+        drawKirby();
+        score += POINTS_PER_TICK;
+        var displayPts = Math.floor(score / SCORE_DISPLAY_DIV);
+        scoreEl.textContent = String(displayPts);
+        if (
+          displayPts >= LOVE_SCORE_TARGET &&
+          !loveLetterTriggered &&
+          state === "playing"
+        ) {
+          loveLetterTriggered = true;
+          openLoveLetter();
+        }
+      }
+
+      KIRBY_IMG.onload = refreshAssetButton;
+      BURGER_IMG.onload = refreshAssetButton;
+      KIRBY_IMG.onerror = refreshAssetButton;
+      BURGER_IMG.onerror = refreshAssetButton;
+      refreshAssetButton();
+      setTimeout(function () {
+        if (!kirbyUsesImage() || !burgerUsesImage()) {
+          btnJugar.disabled = false;
+          gameStartHint.textContent =
+            "No se cargaron las imágenes. Coloca img/kirby.png e img/hamburguesa.png o edita ASSETS en el código.";
+        }
+      }, 4500);
+
+      requestAnimationFrame(tick);
+    })();
+  </script>
+</body>
+</html>
